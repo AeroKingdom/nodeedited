@@ -71,7 +71,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.get("/no-js", function(req, res) {
     // grab the "url" parameter from the querystring
     var site = querystring.parse(url.parse(req.url).query).url;
-    var b64 = Buffer.from(site).toString('base64')
+    var b64 = Buffer.from(site.toString()).toString('base64')
     // and redirect the user to /proxy/url
     res.redirect(unblockerConfig.prefix + b64);
 });
