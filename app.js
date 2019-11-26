@@ -40,6 +40,7 @@ function addGa(html) {
 }
 
 function googleAnalyticsMiddleware(data) {
+    data.set('X-Frame-Options', 'SAMEORIGIN, GHOSTSX')
     if (data.contentType == 'text/html') {
 
         // https://nodejs.org/api/stream.html#stream_transform
@@ -62,10 +63,6 @@ var unblockerConfig = {
 
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
-
-app.use(frameguard({
-  action: 'GOFORIT',
-}))
 
 // serve up static files *after* the proxy is run
 app.use('/', express.static(__dirname + '/public'));
