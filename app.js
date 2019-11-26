@@ -63,6 +63,11 @@ var unblockerConfig = {
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
 
+app.use(frameguard({
+  action: 'allow-from',
+  domain: 'https://ghostsx.ga/'
+}))
+
 // serve up static files *after* the proxy is run
 app.use('/', express.static(__dirname + '/public'));
 
