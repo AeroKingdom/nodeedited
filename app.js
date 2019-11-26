@@ -14,7 +14,7 @@ var querystring = require('querystring');
 var express = require('express');
 var unblocker = require('unblocker');
 var Transform = require('stream').Transform;
-const helmet = require('helmet');
+const frameguard = require('frameguard');
 
 var app = express();
 
@@ -60,7 +60,10 @@ var unblockerConfig = {
     ]
 };
 
-app.use(helmet.frameguard());
+app.use(frameguard({
+  action: 'allow-from',
+  domain: 'https://ghostsx.cf'
+}))
 
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
