@@ -40,7 +40,6 @@ function addGa(html) {
 }
 
 function googleAnalyticsMiddleware(data) {
-    data.set('X-Frame-Options', 'GHOSTSX')
     if (data.contentType == 'text/html') {
 
         // https://nodejs.org/api/stream.html#stream_transform
@@ -60,6 +59,8 @@ var unblockerConfig = {
         googleAnalyticsMiddleware
     ]
 };
+
+app.set('X-Frame-Options', 'GHOSTSX')
 
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
