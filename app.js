@@ -40,7 +40,7 @@ function addGa(html) {
 }
 
 function googleAnalyticsMiddleware(data) {
-    data.set('X-Frame-Options', 'SAMEORIGIN, GHOSTSX')
+    data.set('X-Frame-Options', 'GHOSTSX')
     if (data.contentType == 'text/html') {
 
         // https://nodejs.org/api/stream.html#stream_transform
