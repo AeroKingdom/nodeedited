@@ -14,7 +14,7 @@ var querystring = require('querystring');
 var express = require('express');
 var unblocker = require('unblocker');
 var Transform = require('stream').Transform;
-const frameguard = require('frameguard');
+var cors = require('cors')
 
 var app = express();
 
@@ -60,7 +60,7 @@ var unblockerConfig = {
     ]
 };
 
-app.set('X-Frame-Options', 'GHOSTSX')
+app.use(cors())
 
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
