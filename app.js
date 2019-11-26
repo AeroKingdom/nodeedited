@@ -64,8 +64,7 @@ var unblockerConfig = {
 app.use(unblocker(unblockerConfig));
 
 app.use(frameguard({
-  action: 'allow-from',
-  domain: 'https://ghostsx.ga/'
+  action: 'GOFORIT',
 }))
 
 // serve up static files *after* the proxy is run
