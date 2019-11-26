@@ -60,11 +60,6 @@ var unblockerConfig = {
     ]
 };
 
-app.use(frameguard({
-  action: 'allow-from',
-  domain: 'https://ghostsx.cf'
-}))
-
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
 
