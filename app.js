@@ -14,6 +14,7 @@ var querystring = require('querystring');
 var express = require('express');
 var unblocker = require('unblocker');
 var Transform = require('stream').Transform;
+const helmet = require('helmet');
 
 var app = express();
 
@@ -59,7 +60,7 @@ var unblockerConfig = {
     ]
 };
 
-
+app.use(helmet.frameguard());
 
 // this line must appear before any express.static calls (or anything else that sends responses)
 app.use(unblocker(unblockerConfig));
